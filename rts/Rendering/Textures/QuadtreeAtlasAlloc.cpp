@@ -227,7 +227,7 @@ int CQuadtreeAtlasAlloc::GetNumTexLevels() const
 	RECOIL_DETAILED_TRACY_ZONE;
 	if (!root) return 0;
 	return std::min(
-		std::bit_width(static_cast<uint32_t>(root->GetMinSize())),
+		static_cast<int>(std::bit_width(static_cast<uint32_t>(root->GetMinSize()))),
 		numLevels
 	);
 }
