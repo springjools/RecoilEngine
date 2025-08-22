@@ -61,6 +61,7 @@ target_link_libraries(GameHeadless PRIVATE
 ### Build the executable
 add_executable(engine-headless ${engineSources} ${ENGINE_ICON})
 target_link_libraries(engine-headless no-sound ${engineHeadlessLibraries} GameHeadless no-sound)
+target_link_libraries(engine-headless rmlsollua)
 
 if    (MINGW)
 	# To enable console output/force a console window to open

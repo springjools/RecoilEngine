@@ -1,21 +1,28 @@
-﻿set(sources_RmlSolLua
-	"${CMAKE_CURRENT_SOURCE_DIR}/bind/bind.cpp"
-	"${CMAKE_CURRENT_SOURCE_DIR}/bind/Colour.cpp"
-	"${CMAKE_CURRENT_SOURCE_DIR}/bind/Context.cpp"
-	"${CMAKE_CURRENT_SOURCE_DIR}/bind/Convert.cpp"
-	"${CMAKE_CURRENT_SOURCE_DIR}/bind/DataModel.cpp"
-	"${CMAKE_CURRENT_SOURCE_DIR}/bind/Document.cpp"
-	"${CMAKE_CURRENT_SOURCE_DIR}/bind/Element.cpp"
-	"${CMAKE_CURRENT_SOURCE_DIR}/bind/ElementDerived.cpp"
-	"${CMAKE_CURRENT_SOURCE_DIR}/bind/ElementForm.cpp"
-	"${CMAKE_CURRENT_SOURCE_DIR}/bind/Event.cpp"
-	"${CMAKE_CURRENT_SOURCE_DIR}/bind/Global.cpp"
-	"${CMAKE_CURRENT_SOURCE_DIR}/bind/Vector.cpp"
-	"${CMAKE_CURRENT_SOURCE_DIR}/plugin/SolLuaDataModel.cpp"
-	"${CMAKE_CURRENT_SOURCE_DIR}/plugin/SolLuaDocument.cpp"
-	"${CMAKE_CURRENT_SOURCE_DIR}/plugin/SolLuaEventListener.cpp"
-	"${CMAKE_CURRENT_SOURCE_DIR}/plugin/SolLuaInstancer.cpp"
-	"${CMAKE_CURRENT_SOURCE_DIR}/plugin/SolLuaPlugin.cpp"
-	"${CMAKE_CURRENT_SOURCE_DIR}/RmlSolLua.cpp"
-	PARENT_SCOPE
+set(sources_RmlSolLua
+        "${CMAKE_CURRENT_SOURCE_DIR}/bind/bind.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/bind/Colour.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/bind/Context.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/bind/Convert.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/bind/DataModel.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/bind/Document.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/bind/Element.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/bind/ElementDerived.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/bind/ElementForm.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/bind/Event.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/bind/Global.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/bind/Vector.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/plugin/SolLuaDataModel.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/plugin/SolLuaDocument.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/plugin/SolLuaEventListener.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/plugin/SolLuaInstancer.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/plugin/SolLuaPlugin.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/RmlSolLua.cpp"
 )
+add_library(rmlsollua STATIC ${sources_RmlSolLua})
+target_include_directories(
+          rmlsollua PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
+          ${CMAKE_SOURCE_DIR}/rts/lib/RmlUi/Include
+)
+find_package(SDL2 REQUIRED)
+target_include_directories(rmlsollua PUBLIC ${SDL2_INCLUDE_DIRS})
+target_link_libraries(rmlsollua PUBLIC ${SDL2_LIBRARIES})

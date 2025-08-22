@@ -172,6 +172,7 @@ add_executable(engine-dedicated
 		main.cpp
 	)
 target_link_libraries(engine-dedicated ${engineDedicatedLibraries})
+target_link_libraries(engine-dedicated rmlsollua)
 if    (MINGW)
 	target_link_libraries(engine-dedicated ${WS2_32_LIBRARY} ${IMAGEHLP_LIBRARY} ${IPHLPAPI_LIBRARY} ${WINMM_LIBRARY})
 endif (MINGW)

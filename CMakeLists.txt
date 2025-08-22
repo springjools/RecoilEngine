@@ -657,3 +657,4 @@ if (INSTALL_PORTABLE)
 	file(TOUCH ${CMAKE_CURRENT_BINARY_DIR}/springsettings_portable.cfg)  # empty settings file for portable install
 	install(FILES ${CMAKE_CURRENT_BINARY_DIR}/springsettings_portable.cfg DESTINATION . RENAME springsettings.cfg)
 endif (INSTALL_PORTABLE)
+

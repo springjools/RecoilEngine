@@ -76,8 +76,11 @@ include_directories(${engineIncludes})
 
 ### Build the executable
 add_executable(engine-legacy ${EXE_FLAGS} ${engineSources} ${ENGINE_ICON} ${engineHeaders})
-target_link_libraries(engine-legacy ${engineLibraries} Game)
-
+target_link_libraries(engine-legacy
+    ${engineLibraries}
+    Game
+    rmlsollua   # 👈 Add this line
+)
 
 ### Install the executable
 install(TARGETS engine-legacy DESTINATION ${BINDIR})
